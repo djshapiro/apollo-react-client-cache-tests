@@ -56,15 +56,6 @@ const rootResolvers = {
       };
     },
   },
-  RootMutation: {
-    addCount(_, { amount }) {
-      Data.count += amount
-      return Data.count
-    },
-    induceError() {
-      throw new Error('Custom error message')
-    }
-  }
 }
 
 const schema = [

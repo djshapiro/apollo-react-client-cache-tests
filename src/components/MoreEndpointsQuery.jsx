@@ -26,7 +26,6 @@ const query = graphql(gql`
   query MoreEndpointsQuery($id: Int!){
     test(id: $id) {
       a
-      b
       c {
         e
         f

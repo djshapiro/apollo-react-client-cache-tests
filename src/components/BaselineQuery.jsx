@@ -3,7 +3,7 @@ import gql from 'graphql-tag'
 import { graphql, compose } from 'react-apollo'
 import { Link } from 'react-router'
 
-function FullQuery({ data }) {
+function BaselineQuery({ data }) {
   if (data.loading) {
     return (
       <div>
@@ -13,17 +13,17 @@ function FullQuery({ data }) {
   }
   return (
     <div>
-      Current: Full Query
+      Current: Baseline Query
     </div>
   )
 }
 
-FullQuery.propTypes = {
+BaselineQuery.propTypes = {
   data: React.PropTypes.object.isRequired
 }
 
 const query = graphql(gql`
-  query FullQuery($id: Int!){
+  query BaselineQuery($id: Int!){
     test(id: $id) {
       a
       c {
@@ -42,4 +42,4 @@ const query = graphql(gql`
 
 export default compose(
   query
-)(FullQuery);
+)(BaselineQuery);

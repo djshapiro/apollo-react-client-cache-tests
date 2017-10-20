@@ -2,7 +2,7 @@ import React from 'react'
 import gql from 'graphql-tag'
 import { graphql, compose } from 'react-apollo'
 import { Link } from 'react-router'
-import FullQuery from '../components/FullQuery'
+import BaselineQuery from '../components/BaselineQuery'
 import MoreFieldsQuery from '../components/MoreFieldsQuery'
 import LessFieldsQuery from '../components/LessFieldsQuery'
 import MoreEndpointsQuery from '../components/MoreEndpointsQuery'
@@ -26,9 +26,12 @@ class QueryTester extends React.Component {
         </div>
       )
     }
+    const divStyle = {
+      fontFamily: 'Andale mono, monospace',
+    };
     return (
-      <div>
-        { open === 'full' && <FullQuery />}
+      <div style={divStyle}>
+        { open === 'baseline' && <BaselineQuery />}
         { open === 'moreFields' && <MoreFieldsQuery />}
         { open === 'lessFields' && <LessFieldsQuery />}
         { open === 'moreEndpoints' && <MoreEndpointsQuery />}
@@ -37,9 +40,9 @@ class QueryTester extends React.Component {
 
         <button
           onClick={() => {
-            this.setState({open: 'full'});
+            this.setState({open: 'baseline'});
           }}>
-        full query
+        {'{{a X c {e f} d {e f}}}'} - baseline
         </button>
         <br />
 
@@ -47,7 +50,7 @@ class QueryTester extends React.Component {
           onClick={() => {
             this.setState({open: 'moreFields'});
           }}>
-        more fields query
+        {'{{a b c {e f} d {e f}}}'} - more fields
         </button>
         <br />
       
@@ -55,15 +58,7 @@ class QueryTester extends React.Component {
           onClick={() => {
             this.setState({open: 'lessFields'});
           }}>
-        less fields query
-        </button>
-        <br />
-      
-        <button
-          onClick={() => {
-            this.setState({open: 'moreEndpoints'});
-          }}>
-        more endpoints query
+        {'{{X X c {e f} d {e f}}}'} - less fields
         </button>
         <br />
       
@@ -71,10 +66,18 @@ class QueryTester extends React.Component {
           onClick={() => {
             this.setState({open: 'lessSubfields'});
           }}>
-        less subfields query
+        {'{{a X c {e X} d {e X}}}'} - less subfields
         </button>
         <br />
 
+        <button
+          onClick={() => {
+            this.setState({open: 'moreEndpoints'});
+          }}>
+        {'{{a X c {e f} d {e f}} othertest}'} - more endpoints
+        </button>
+        <br />
+      
       </div>
     );
   }
