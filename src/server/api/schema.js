@@ -6,6 +6,7 @@ const rootSchema = `
   type RootQuery {
     count: Count
     test(id: Int!): Test
+    othertest(id: Int!): OtherTest
   }
     
   type Test {
@@ -18,6 +19,10 @@ const rootSchema = `
   type SubTest {
     e: String
     f: Int
+  }
+  
+  type OtherTest {
+    othertestfield: Int
   }
 
   type RootMutation {
@@ -44,6 +49,11 @@ const rootResolvers = {
         c: sub,
         d: [ sub, sub ],
       }
+    },
+    othertest(root, args, context) {
+      return {
+        othertestfield: args.id,
+      };
     },
   },
   RootMutation: {
