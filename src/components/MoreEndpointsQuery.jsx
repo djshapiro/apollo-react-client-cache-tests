@@ -35,8 +35,8 @@ const query = graphql(gql`
         f
       }
     }
-    othertest(id: $id) {
-      othertestfield
+    g(id: $id) {
+      h
     }
   }
 `, {

@@ -42,7 +42,7 @@ class QueryTester extends React.Component {
           onClick={() => {
             this.setState({open: 'baseline'});
           }}>
-        {'{{a X c {e f} d {e f}}}'} - baseline
+        {'{{a X c {e f} d {e f}} X {X}}'} - baseline
         </button>
         <br />
 
@@ -50,7 +50,7 @@ class QueryTester extends React.Component {
           onClick={() => {
             this.setState({open: 'moreFields'});
           }}>
-        {'{{a b c {e f} d {e f}}}'} - more fields
+        {'{{a b c {e f} d {e f}} X {X}}'} - more fields
         </button>
         <br />
       
@@ -58,7 +58,7 @@ class QueryTester extends React.Component {
           onClick={() => {
             this.setState({open: 'lessFields'});
           }}>
-        {'{{X X c {e f} d {e f}}}'} - less fields
+        {'{{X X c {e f} d {e f}} X {X}}'} - less fields
         </button>
         <br />
       
@@ -66,7 +66,7 @@ class QueryTester extends React.Component {
           onClick={() => {
             this.setState({open: 'lessSubfields'});
           }}>
-        {'{{a X c {e X} d {e X}}}'} - less subfields
+        {'{{a X c {e X} d {e X}} X {X}}'} - less subfields
         </button>
         <br />
 
@@ -74,7 +74,7 @@ class QueryTester extends React.Component {
           onClick={() => {
             this.setState({open: 'moreEndpoints'});
           }}>
-        {'{{a X c {e f} d {e f}} othertest}'} - more endpoints
+        {'{{a X c {e f} d {e f}} g {h}}'} - more endpoints
         </button>
         <br />
       

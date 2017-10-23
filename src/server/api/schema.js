@@ -1,12 +1,10 @@
-import { schema as countSchema, resolvers as countResolvers } from './count'
 import Data from './data'
 import { makeExecutableSchema } from 'graphql-tools'
 
 const rootSchema = `
   type RootQuery {
-    count: Count
     test(id: Int!): Test
-    othertest(id: Int!): OtherTest
+    g(id: Int!): G
   }
     
   type Test {
@@ -21,24 +19,17 @@ const rootSchema = `
     f: Int
   }
   
-  type OtherTest {
-    othertestfield: Int
-  }
-
-  type RootMutation {
-    addCount(amount: Int!): Count
-    induceError: String
+  type G {
+    h: Int
   }
 
   schema {
     query: RootQuery
-    mutation: RootMutation
   }
 `
 
 const rootResolvers = {
   RootQuery: {
-    count: () => Data.count,
     test(root, args, context) {
       const id = args.id;
       const sid = '' + id;
@@ -50,9 +41,9 @@ const rootResolvers = {
         d: [ sub, sub ],
       }
     },
-    othertest(root, args, context) {
+    g(root, args, context) {
       return {
-        othertestfield: args.id,
+        h: args.id,
       };
     },
   },
@@ -60,12 +51,10 @@ const rootResolvers = {
 
 const schema = [
   rootSchema,
-  countSchema
 ]
 
 const resolvers = {
   ...rootResolvers,
-  ...countResolvers
 }
 
 const executableSchema = makeExecutableSchema({

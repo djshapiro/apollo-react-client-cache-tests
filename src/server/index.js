@@ -5,7 +5,6 @@ import log from '../log'
 import appRenderer from './middleware/app-renderer'
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express'
 import schema from './api/schema'
-import mocks from './api/mocks'
 
 process.on('uncaughtException', (ex) => {
   log.error(ex)
@@ -37,7 +36,6 @@ app.use('/graphql', graphqlExpress({
   graphiql: true,
   pretty: true,
   schema,
-  mocks,
   allowUndefinedInResolve: false
 }))
 // This middleware should be last. Return the React app only if no other route is hit.

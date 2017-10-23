@@ -1,6 +1,4 @@
 import { Route, IndexRedirect } from 'react-router'
-import LocalCounter from './containers/LocalCounter'
-import RemoteCounter from './containers/RemoteCounter'
 import QueryTester from './containers/QueryTester'
 import App from './components/App'
 import React from 'react'
