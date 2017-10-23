@@ -37,6 +37,7 @@ class QueryTester extends React.Component {
         { open === 'lessFields' && <LessFieldsQuery />}
         { open === 'moreEndpoints' && <MoreEndpointsQuery />}
         { open === 'lessSubfields' && <LessSubfieldsQuery />}
+        { open === 'twoBaselines' && <div><BaselineQuery /><BaselineQuery /></div>}
         <br />
 
         <button
@@ -76,6 +77,14 @@ class QueryTester extends React.Component {
             this.setState({open: 'moreEndpoints'});
           }}>
         {'{{a X c {e f} d {e f}} g {h}}'} - more endpoints
+        </button>
+        <br />
+      
+        <button
+          onClick={() => {
+            this.setState({open: 'twoBaselines'});
+          }}>
+        {'{{a X c {e f} d {e f}} X {X}} x2'} - two baselines simultaneously
         </button>
         <br />
       
