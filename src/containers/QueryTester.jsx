@@ -13,7 +13,7 @@ class QueryTester extends React.Component {
     super(props);
 
     this.state = {
-      open: undefined,
+      open: '',
     };
   }
   render() {
@@ -31,6 +31,7 @@ class QueryTester extends React.Component {
     };
     return (
       <div style={divStyle}>
+        { open === '' && <div>Click a button</div>}
         { open === 'baseline' && <BaselineQuery />}
         { open === 'moreFields' && <MoreFieldsQuery />}
         { open === 'lessFields' && <LessFieldsQuery />}
