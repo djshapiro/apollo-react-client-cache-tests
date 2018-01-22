@@ -11,9 +11,6 @@ const styles = StyleSheet.create({
 export default function App({ children }) {
   return (
     <div>
-      <div className={css(styles.navBar)}>
-        This is where your navbar could go. This is styled with Aphrodite.
-      </div>
       {children}
     </div>
   )
